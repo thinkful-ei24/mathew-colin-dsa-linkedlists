@@ -208,26 +208,41 @@ function findLast(sll) {
 
 
 //REVERSE LIST
-
 function reverseList(sll) {
-  let prev = sll.head;
-  let current = sll.head.next;
-  sll.head.next = null;
+  let prev = null;
+  let current = sll.head;
+  //sll.head.next = null;
 
-  while (prev) {
-    //set head to prev
-    prev.next = sll.head;
-    sll.head = prev;
-    //set prev to current
+  while (current) {
+    let savedNode = current.next;
+    current.next = prev;
     prev = current;
-    //set current to current.next
-    if (!current) {
-      return sll;
-    } else {
-      current = current.next;
-    }
+    current = savedNode;
+    
+    // //set head to prev
+    // // prev.next = sll.head;
+    // if (current.next) {
+    //   savedNode = current.next;
+    // } else {
+    //   break;
+    // }
+    
+
+    // current.next = prev;
+    // //set prev to current
+    // prev = current;
+    // //set current to current.next
+    // if (!current) {
+    //   break;
+    // } else {
+    //   current = savedNode;
+    // }
   }
+  sll.head = prev;
+  return sll;
 }
+
+
 //function reverseSll(sll) {
 //
 //  const currentNode = sll.head;
@@ -261,8 +276,12 @@ function main() {
   // console.log(isEmpty(new LinkedList())
   // console.log(findPrevious(sll, 'cat'));
   // console.log('Last is ', findLast(sll));
-  //serializeSll(reverseList(sll));
+  console.log('REGULAR XXXXXXXXXXXXXXXXXXXXXXXXXXXXx')
   serializeSll(sll);
+
+  // console.log('reverse');
+  // serializeSll(reverseList(sll));
+  
 }
 
 main();
