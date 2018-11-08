@@ -1,3 +1,5 @@
+'use strict';
+
 class _Node {
   constructor(value, next) {
     this.value = value;
@@ -157,6 +159,48 @@ function serializeSll(sll) {
   return;
 }
 
+function size(sll) {
+  let currentNode = sll.head;
+  let counter = 0;
+  while (currentNode !== null) {
+    counter++;
+    currentNode = currentNode.next;
+  }
+  return counter;
+}
+
+function isEmpty(sll) {
+  return sll.head === null;
+}
+
+function findPrevious(sll, key) {
+  let currentNode = sll.head;
+  let previousNode = sll.head;
+
+  while (currentNode) {
+    if (currentNode.value === key) {
+      return previousNode;
+    }
+
+    previousNode = currentNode;
+    currentNode = currentNode.next;    
+  }
+  return null;
+}
+
+function findLast(sll) {
+  let currentNode = sll.head;
+
+  while (currentNode) {
+    if (currentNode.next === null) {
+      return currentNode.value;
+    }
+
+    currentNode = currentNode.next;    
+  }
+  return null;
+}
+
 function main() {
   const sll = new LinkedList();
   sll.insertFirst('Apollo');
@@ -169,6 +213,11 @@ function main() {
   sll.insertAfter('Hotdog', 'Helo');
   sll.insertAt('cat', 3);
   sll.remove('Tauhida');
+  // console.log(size(sll));
+  // console.log(isEmpty(sll))
+  // console.log(isEmpty(new LinkedList())
+  // console.log(findPrevious(sll, 'cat'));
+  // console.log('Last is ', findLast(sll));
   serializeSll(sll);
 }
 
