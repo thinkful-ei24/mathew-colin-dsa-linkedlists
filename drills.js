@@ -201,6 +201,13 @@ function findLast(sll) {
   return null;
 }
 
+////////////////////////////////////////////////
+// Mystery Program
+// It is trying to look for blocks of repeating values, but it is not doing anything with those values. 
+// Runtime is: O(n^2)
+
+
+
 function main() {
   const sll = new LinkedList();
   sll.insertFirst('Apollo');
