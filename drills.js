@@ -183,7 +183,7 @@ function findPrevious(sll, key) {
     }
 
     previousNode = currentNode;
-    currentNode = currentNode.next;    
+    currentNode = currentNode.next;
   }
   return null;
 }
@@ -196,16 +196,52 @@ function findLast(sll) {
       return currentNode.value;
     }
 
-    currentNode = currentNode.next;    
+    currentNode = currentNode.next;
   }
   return null;
 }
 
 ////////////////////////////////////////////////
 // Mystery Program
-// It is trying to look for blocks of repeating values, but it is not doing anything with those values. 
+// It is trying to look for blocks of repeating values, but it is not doing anything with those values.
 // Runtime is: O(n^2)
 
+
+//REVERSE LIST
+
+function reverseList(sll) {
+  let prev = sll.head;
+  let current = sll.head.next;
+  sll.head.next = null;
+
+  while (prev) {
+    //set head to prev
+    prev.next = sll.head;
+    sll.head = prev;
+    //set prev to current
+    prev = current;
+    //set current to current.next
+    if (!current) {
+      return sll;
+    } else {
+      current = current.next;
+    }
+  }
+}
+//function reverseSll(sll) {
+//
+//  const currentNode = sll.head;
+//  //BASE CASE
+//  //if currentNode.next === null return;
+//  if (!currentNode) {
+//    return;
+//  }
+//  //GENERAL CASE
+//  sll.head = currentNode.next;
+//  return currentNode + reverseSll(sll);
+//  //return head
+//  //call reverseSll(sll - head)
+//}
 
 
 function main() {
@@ -225,6 +261,7 @@ function main() {
   // console.log(isEmpty(new LinkedList())
   // console.log(findPrevious(sll, 'cat'));
   // console.log('Last is ', findLast(sll));
+  //serializeSll(reverseList(sll));
   serializeSll(sll);
 }
 
